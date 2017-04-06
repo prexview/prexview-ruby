@@ -1,4 +1,4 @@
-require 'PrexView'
+require 'prex_view'
 
 def send_request
   handle  = File.open('data/simple-invoice.xml', 'r')

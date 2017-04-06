@@ -57,7 +57,7 @@ PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</
 
 ![Design](./img/design.png)
 
-For more information please check the [documentation](https://prexview.com/docs/) or look our [xamples](/xamples/)
+For more information please check the [documentation](https://prexview.com/docs/) or look our [examples](/examples/)
 
 
 ## Contributing
