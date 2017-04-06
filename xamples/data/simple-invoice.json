@@ -1,0 +1,79 @@
+{
+  "number":"ID-8387323",
+  "date_issued":"1972-01-01 13:42:24",
+  "currency": "USD",
+  "subtotal":"52330",
+  "tax_rate":"16",
+  "tax":"8372.8",
+  "total": "60702.8",
+  "bill_to": {
+    "name": "Daniel Osorio",
+    "email": "hello@prexview.com"
+  },
+  "order":[
+    {
+      "id": "3421",
+      "name": "Apple",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "150",
+      "quantity": "75",
+      "total": "11250"
+    },{
+      "id": "8473",
+      "name": "Banana",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "80",
+      "quantity": "38",
+      "total": "3040"
+    },{
+      "id": "7820",
+      "name": "Blackberry",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "130",
+      "quantity": "32",
+      "total": "4160"
+    },{
+      "id": "8734",
+      "name": "Grape",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "180",
+      "quantity": "49",
+      "total": "8820"
+    },{
+      "id": "8902",
+      "name": "Mango",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "110",
+      "quantity": "28",
+      "total": "3080"
+    },{
+      "id": "3674",
+      "name": "Pineapple",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "120",
+      "quantity": "13",
+      "total": "1560"
+    },{
+      "id": "8730",
+      "name": "Watermelon",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "150",
+      "quantity": "120",
+      "total": "18000"
+    },{
+      "id": "1567",
+      "name": "Lemon",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "30",
+      "quantity": "27",
+      "total": "810"
+    },{
+      "id": "4783",
+      "name": "Orange",
+      "description": "Lorem ipsum dolor si amen",
+      "price": "70",
+      "quantity": "23",
+      "total": "1610"
+    }
+  ]
+}

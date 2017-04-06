@@ -1,8 +1,7 @@
 # PrexView
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/PrexView`. To experiment with that code, run `bin/console` for an interactive prompt.
+A composer library to use PrexView a fast, scalable and very friendly service for programatic HTML, PDF, PNG or JPG generation using JSON or XML data.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -20,20 +19,50 @@ Or install it yourself as:
 
     $ gem install PrexView
 
-## Usage
+## Quick Start
 
-TODO: Write usage instructions here
+First you need download PrexView Studio, [click here for download](https://prexview.com/downloads/)
 
-## Development
+To use this gem you only need to configure the API REST integration in PrexView Studio.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+You can find this using your PrexView account and going to API section, generate your token, like next image.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+![API token](./img/api.png)
+
+You can use your token by two forms, first and our recomendation is use a enviroment variable for load your token, only use a predefined name `PREXVIEW_TOKEN` :
+
+```bash
+$ export PREXVIEW_TOKEN=<token>
+```
+If you using this method your token is easy to change and maintain, and don't is necesary add the token param in request.
+
+The other way is use your token embed in your request, thats way example in the next section. 
+
+```bash
+$ export MY_AWESOME_BUT_DESCRIPTIVE_NAME_ENVIROMENT=<token>
+```
+For create a new request:
+
+```ruby
+# Using your AWESOME BUT DESCRIPTIVE NAME ENVIROMENT
+PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</xml>", token: "#{ENV['MY_AWESOME_BUT_DESCRIPTIVE_NAME_ENVIROMENT']}" })
+```
+
+```ruby
+# Using predefined PREXVIEW_TOKEN enviroment
+PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</xml>"})
+```
+
+**Design:** For use design first you add a design in PrexView Studio, go to design section and create one:
+
+![Design](./img/design.png)
+
+For more information please check the [documentation](https://prexview.com/docs/) or look our [xamples](/xamples/)
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/PrexView. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/prexview/prexview-ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

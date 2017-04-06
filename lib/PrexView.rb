@@ -1,4 +1,5 @@
 require "PrexView/version"
+require "PrexView/prex_view_service"
 
 module PrexView
   def self.transform options
@@ -12,6 +13,6 @@ module PrexView
     #   type: (String)
     #   text: (String or json)
     #   token: (String)
-    PrexViewService::Transform.new(options).do_it
+    code, content = PrexViewService::Transform.new(options).do_it
   end
 end

@@ -3,12 +3,22 @@ require "prexview"
 
 class PrexViewTest < Minitest::Test
   def test_params_for_all_required_options_present_xml
-    assert_equal "200",
-      PrexView.transform({type: 'xml', text: "<xml>hello world</xml>", token: "ryidhJZYWnR7YH7QrXXXGkkNv4s73keCoOLrS6kclD2Eo5IW6T6By9h9ElKBfve8"})
+    code, response = PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</xml>", token: "#{ENV['PREXVIEW_TOKEN']}" })
+    assert_equal "200", code
   end
 
   def test_params_for_all_required_options_present_json
-    assert_equal "200",
-      PrexView.transform({type: 'json', text: "{'hello':'world'}", token: "ryidhJZYWnR7YH7QrXXXGkkNv4s73keCoOLrS6kclD2Eo5IW6T6By9h9ElKBfve8"})
+    code, response = PrexView.transform({type: 'json', design: "design-json", text: { "hello": "world" } , token: "#{ENV['PREXVIEW_TOKEN']}" })
+    assert_equal "200", code
+  end
+
+  def test_params_for_all_required_options_except_token_present_xml
+    code, response = PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</xml>"})
+    assert_equal "200", code
+  end
+
+  def test_params_for_all_required_options_except_token_present_json
+    code, response = PrexView.transform({type: 'json', design: "design-json", text: { "hello": "world" } })
+    assert_equal "200", code
   end
 end
