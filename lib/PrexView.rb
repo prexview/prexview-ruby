@@ -2,17 +2,31 @@ require "PrexView/version"
 require "PrexView/prex_view_service"
 
 module PrexView
-  def self.transform options
+  def self.send_xml xml, options
     # Send doc to PrexView
     #
     # Example:
-    #   >> PrexView.transform({type: "xml/json", text: "<hello>Workd</hello>", token: "your_token"})
+    #   >> PrexView.send_xml(xml, {type: "xml/json", token: "your_token"})
     #   => "200"
     #
     # Arguments:
+    #   xml: (String or json)
     #   type: (String)
-    #   text: (String or json)
     #   token: (String)
-    code, content = PrexViewService::Transform.new(options).do_it
+    code, content = PrexViewService::Transform.new(xml, options).send_xml
+  end
+
+  def self.send_json json, options
+    # Send doc to PrexView
+    #
+    # Example:
+    #   >> PrexView.send_json(json, {type: "xml/json", token: "your_token"})
+    #   => "200"
+    #
+    # Arguments:
+    #   json: (String or json)
+    #   type: (String)
+    #   token: (String)
+    code, content = PrexViewService::Transform.new(json, options).send_json
   end
 end

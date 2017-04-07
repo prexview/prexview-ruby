@@ -5,19 +5,29 @@ require "json"
 
 module PrexViewService
   class Transform
-    def initialize options = {}
-      @uri   = URI("#{ENV['PREXVIEW_URL']}")
-      @token = options.fetch(:token, "#{ENV['PREXVIEW_TOKEN']}")
-      @type  = options.fetch(:type, nil)
-      @text  = options.fetch(:text, nil)
+    def initialize data_string, options = {}
+      @data_string   = data_string
+
+      @uri    = URI("https://api.prexview.com/v1/transform")
+      @token  = options.fetch(:token, "#{ENV['PREXVIEW_TOKEN']}")
+      @type   = options.fetch(:type, nil)
       @design = options.fetch(:design, nil)
       @output = options.fetch(:options, 'pdf')
       @note   = options.fetch(:note, '')
     end
 
-    def do_it
-      body = build_body
+    def send_xml
+      body = { "xml" => @data_string, "design" => @design, "output" => @output, "note" => @note}
+      _post body
+    end
 
+    def send_json
+      body = { "json" => JSON.dump(@data_string), "design" => @design, "output" => @output, "note" => @note}
+      _post body
+    end
+
+  private
+    def _post body
       http = Net::HTTP.new(@uri.host, @uri.port)
       http.use_ssl = true
       request = Net::HTTP::Post.new @uri, body
@@ -26,6 +36,7 @@ module PrexViewService
       request["authorization"] = @token
       response = http.request(request)
       response.body
+
       if ("200".."299").to_a.include? response.code
         [response.code, response.body]
       elsif ("400".."499").to_a.include? response.code
@@ -33,17 +44,8 @@ module PrexViewService
       end
     end
 
-    def build_body
-      case @type
-      when 'xml'
-        { "xml" => @text, "design" => @design, "output" => @output }
-      when 'json'
-        { "json" => JSON.dump(@text), "design" => @design, "output" => @output}
-      end
-    end
-
-    def save_field_in_filesystem bytes
-      File.open("coso", 'wb') { |output|
+    def save_field_in_filesystem filename, bytes
+      File.open(filename, 'wb') { |output|
         output << bytes
       }
     end
