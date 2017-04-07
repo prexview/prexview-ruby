@@ -4,7 +4,7 @@ require 'json'
 def send_request
   array_content = JSON.parse(File.new('data/multiple-invoice.json', 'r').read)
   transform = -> (json) do
-    code, response = PrexView.transform(json, { type: 'json', design: "invoice-jso" })
+    code, response = PrexView.send_json(json, { type: 'json', design: "invoice-jso" })
     if ("200".."299").to_a.include? code
       save_in_filesystem response, "#{content["number"]}.pdf"
     elsif ("400".."499").to_a.include? code
