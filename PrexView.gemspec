@@ -6,7 +6,7 @@ require 'PrexView/version'
 Gem::Specification.new do |spec|
   spec.name          = "PrexView"
   spec.version       = PrexView::VERSION
-  spec.authors       = ["Urielable"]
+  spec.authors       = ["Urielable", "prexview"]
   spec.email         = ["uriel85@gmail.com"]
 
   spec.summary       = "A composer library to use PrexView a fast, scalable and very friendly service for programatic HTML, PDF, PNG or JPG generation using JSON or XML data."
