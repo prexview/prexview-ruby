@@ -2,9 +2,9 @@ require 'prex_view'
 
 def send_request
   handle  = File.open('data/simple-invoice.xml', 'r')
-  content = handle.read
+  xml = handle.read
 
-  code, response = PrexView.transform({ type: 'xml', design: "invoice-xml", text: content })
+  code, response = PrexView.send_xml(xml, { type: 'xml', design: "invoice-xml" })
 
   if ("200".."299").to_a.include? code
     save_in_filesystem response, 'pdf'
