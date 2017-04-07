@@ -36,13 +36,29 @@ $ export PREXVIEW_TOKEN=<token>
 In your application
 
 ```ruby
-PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</xml>"})
+# xml example
+xml = "<xml>hello world</xml>"
+code, response = PrexView.send_xml(xml, {type: 'xml', design: "design-xml"})
+```
+
+```ruby
+# json example
+json = { "hello": "world" }
+code, response = PrexView.send_json(json, {type: 'json', design: "design-json" })
 ```
 
 The second way is to pass the token key as a parameter
 
 ```ruby
-PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</xml>", token: "<token>" })
+# xml example
+xml = "<xml>hello world</xml>"
+PrexView.send_xml(xml, {type: 'xml', design: "design-xml", token: "<token>" })
+```
+
+```ruby
+# json example
+json = { "hello": "world" }
+code, response = PrexView.send_json(json, {type: 'json', design: "design-json", token: "<token>" })
 ```
 
 **Design:** For use design first you add a design in PrexView Studio, go to design section and create one:
