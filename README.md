@@ -36,14 +36,12 @@ $ export PREXVIEW_TOKEN=<token>
 In your application
 
 ```ruby
-# Using predefined PREXVIEW_TOKEN enviroment
 PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</xml>"})
 ```
 
 The second way is to pass the token key as a parameter
 
 ```ruby
-# Using your AWESOME BUT DESCRIPTIVE NAME ENVIROMENT
 PrexView.transform({type: 'xml', design: "design-xml", text: "<xml>hello world</xml>", token: "<token>" })
 ```
 
